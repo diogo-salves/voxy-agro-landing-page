@@ -1,0 +1,11 @@
+# Vercel
+.vercel
+
+# Logos antigas (não usadas)
+logo.png
+logo.jpeg
+logo-transparent.png
+
+# Sistema
+.DS_Store
+*.log
