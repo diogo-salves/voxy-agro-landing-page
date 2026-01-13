@@ -1076,6 +1076,115 @@
             .stat-number {
                 font-size: 2.5rem;
             }
+
+            /* Pricing mobile optimization */
+            .pricing {
+                padding: var(--space-lg) var(--space-sm);
+            }
+
+            .pricing-card {
+                padding: 1.5rem 1rem;
+                border-radius: var(--radius-md);
+            }
+
+            .pricing-card h3 {
+                font-size: 1.5rem !important;
+                margin-bottom: 0.75rem !important;
+                line-height: 1.2;
+            }
+
+            .pricing-badge {
+                font-size: 0.7rem;
+                padding: 0.4rem 1rem;
+                margin-bottom: 0.75rem;
+            }
+
+            .price {
+                margin: 0.5rem 0;
+            }
+
+            .price-value {
+                font-size: 3rem;
+            }
+
+            .pricing-card .price-value {
+                font-size: 1.75rem !important;
+                line-height: 1;
+            }
+
+            .price-currency {
+                font-size: 1.25rem;
+            }
+
+            .price-period {
+                font-size: 1rem;
+            }
+
+            .price-note {
+                font-size: 0.85rem;
+                margin-bottom: 0.75rem;
+                line-height: 1.4;
+            }
+
+            .price-features {
+                margin: 0.75rem 0;
+                padding: 0.75rem 0;
+            }
+
+            .price-feature {
+                padding: 0.4rem 0;
+                gap: 0.625rem;
+            }
+
+            .price-feature span {
+                font-size: 0.85rem;
+                line-height: 1.3;
+            }
+
+            .check-icon {
+                width: 18px;
+                height: 18px;
+                font-size: 0.65rem;
+            }
+
+            .pricing-form {
+                margin-top: 0.75rem;
+            }
+
+            .pricing-form input {
+                padding: 0.875rem 1rem;
+                font-size: 0.95rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .cta-button {
+                padding: 1rem;
+                font-size: 0.95rem;
+                margin-top: 0.5rem;
+            }
+
+            .guarantee {
+                margin-top: 0.75rem;
+                font-size: 0.75rem;
+            }
+
+            .guarantee svg {
+                width: 14px;
+                height: 14px;
+            }
+
+            .section-header {
+                margin-bottom: var(--space-lg);
+            }
+
+            .section-subtitle {
+                font-size: 1rem;
+            }
+
+            /* Hide some features on mobile for better fit */
+            .hide-mobile {
+                display: none;
+            }
         }
 
         /* Accessibility - Reduced Motion */
@@ -1469,11 +1578,11 @@
                         <span class="check-icon">✓</span>
                         <span>PDFs com sua logo</span>
                     </div>
-                    <div class="price-feature">
+                    <div class="price-feature hide-mobile">
                         <span class="check-icon">✓</span>
                         <span>Histórico completo na nuvem</span>
                     </div>
-                    <div class="price-feature">
+                    <div class="price-feature hide-mobile">
                         <span class="check-icon">✓</span>
                         <span>Suporte via WhatsApp</span>
                     </div>
@@ -1504,12 +1613,12 @@
             <div class="pricing-card animate-on-scroll">
                 <span class="pricing-badge" style="background: var(--teal);">Empresas</span>
 
-                <h3 style="font-family: var(--font-display); font-size: 1.75rem; color: var(--teal); margin-bottom: var(--space-md);">Plano Empresarial</h3>
+                <h3 style="font-family: var(--font-display); font-size: 1.75rem; color: var(--teal); margin-bottom: var(--space-md); white-space: nowrap;">Para Empresas</h3>
 
                 <div class="price">
-                    <span class="price-value" style="font-size: 2.5rem;">Personalizado</span>
+                    <span class="price-value" style="font-size: 2rem; font-family: var(--font-display);">Sob Medida</span>
                 </div>
-                <p class="price-note">Soluções sob medida para sua equipe técnica</p>
+                <p class="price-note">Soluções personalizadas para sua equipe</p>
 
                 <div class="price-features">
                     <div class="price-feature">
@@ -1520,7 +1629,7 @@
                         <span class="check-icon">✓</span>
                         <span>Painel administrativo</span>
                     </div>
-                    <div class="price-feature">
+                    <div class="price-feature hide-mobile">
                         <span class="check-icon">✓</span>
                         <span>Relatórios ilimitados</span>
                     </div>
@@ -1532,7 +1641,7 @@
                         <span class="check-icon">✓</span>
                         <span>Templates personalizados</span>
                     </div>
-                    <div class="price-feature">
+                    <div class="price-feature hide-mobile">
                         <span class="check-icon">✓</span>
                         <span>Integração com sistemas</span>
                     </div>
