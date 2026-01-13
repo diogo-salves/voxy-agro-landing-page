@@ -4,7 +4,11 @@
 # Logos antigas (não usadas)
 logo.png
 logo.jpeg
-logo-transparent.png
+logo-optimized.png
+
+# Logos de teste (propostas alternativas)
+logo-opcao-*.svg
+comparacao-logos.html
 
 # Sistema
 .DS_Store

@@ -1054,13 +1054,186 @@
                 font-size: 2.5rem;
             }
         }
+
+        /* Accessibility - Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Screen Reader Only */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
+        /* Improved contrast for form-note */
+        .form-note {
+            color: var(--text);
+            opacity: 0.75;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: var(--space-2xl) var(--space-md);
+            background: var(--white);
+        }
+
+        .testimonials-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-lg);
+        }
+
+        .testimonial-card {
+            background: var(--cream);
+            padding: var(--space-lg);
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(26, 74, 74, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: var(--space-md);
+        }
+
+        .testimonial-avatar {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: var(--teal);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        .testimonial-info h4 {
+            font-weight: 600;
+            color: var(--teal);
+            margin-bottom: 0.25rem;
+        }
+
+        .testimonial-info p {
+            font-size: 0.875rem;
+            color: var(--text-light);
+        }
+
+        .testimonial-text {
+            color: var(--text);
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        .testimonial-text::before {
+            content: '"';
+            color: var(--amber);
+            font-size: 2rem;
+            line-height: 0;
+            vertical-align: -0.4em;
+        }
+
+        /* Floating CTA */
+        .floating-cta {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 999;
+            opacity: 0;
+            transform: translateY(100px);
+            transition: all 0.4s ease;
+            pointer-events: none;
+        }
+
+        .floating-cta.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: all;
+        }
+
+        .floating-cta a {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: var(--amber);
+            color: var(--white);
+            padding: 1rem 1.5rem;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.3s ease;
+        }
+
+        .floating-cta a:hover {
+            background: var(--amber-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .floating-cta-icon {
+            width: 24px;
+            height: 24px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.875rem;
+        }
+
+        @media (max-width: 640px) {
+            .floating-cta {
+                bottom: 1rem;
+                right: 1rem;
+                left: 1rem;
+            }
+
+            .floating-cta a {
+                width: 100%;
+                justify-content: center;
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- Floating CTA -->
+    <div class="floating-cta" id="floatingCta">
+        <a href="#pricing">
+            <span class="floating-cta-icon">🚀</span>
+            <span>Testar 7 Dias Grátis</span>
+        </a>
+    </div>
+
     <!-- Navigation -->
     <nav id="nav">
         <div class="nav-content">
-            <img src="logo-optimized.png" alt="Voxy Agro" class="logo">
+            <img src="logo-transparent.png" alt="Voxy Agro" class="logo">
             <a href="#pricing" class="nav-cta">Começar Agora</a>
         </div>
     </nav>
@@ -1079,7 +1252,8 @@
                 </p>
 
                 <form class="hero-form" id="heroForm">
-                    <input type="tel" name="whatsapp" placeholder="Seu WhatsApp com DDD" required>
+                    <label for="hero-whatsapp" class="sr-only">Seu WhatsApp com DDD</label>
+                    <input type="tel" id="hero-whatsapp" name="whatsapp" placeholder="Seu WhatsApp com DDD" required>
                     <button type="submit">Testar Grátis</button>
                 </form>
                 <p class="form-note">7 dias grátis, sem cartão de crédito</p>
@@ -1088,33 +1262,9 @@
 
             <div class="hero-visual">
                 <div class="phone-mockup">
-                    <div class="phone-notch"></div>
-                    <div class="phone-screen">
-                        <div class="chat-header">
-                            <div class="chat-avatar">VA</div>
-                            <div>
-                                <div class="chat-name">Voxy Agro</div>
-                                <div class="chat-status">online</div>
-                            </div>
-                        </div>
-                        <div class="chat-bubble sent">
-                            Visitei a Fazenda Santa Rita hoje, rebanho com boa condição corporal
-                            <div class="chat-time">14:32</div>
-                        </div>
-                        <div class="chat-bubble sent">
-                            🎤 Áudio (0:45)
-                            <div class="chat-time">14:33</div>
-                        </div>
-                        <div class="chat-bubble sent">
-                            📸 3 fotos
-                            <div class="chat-time">14:33</div>
-                        </div>
-                        <div class="chat-bubble received">
-                            ✅ Relatório pronto!<br><br>
-                            📄 fazenda_santa_rita.pdf
-                            <div class="chat-time">14:36</div>
-                        </div>
-                    </div>
+                    <img src="whatsapp-conversation-real.png"
+                         alt="Conversa real com o Voxy Agro gerando relatório técnico"
+                         style="width: 100%; border-radius: 24px; display: block;">
                 </div>
             </div>
         </div>
@@ -1211,6 +1361,56 @@
         </div>
     </section>
 
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="section-header animate-on-scroll">
+            <p class="section-label">Depoimentos</p>
+            <h2>Quem já usa o Voxy</h2>
+            <p class="section-subtitle">Técnicos reais compartilham suas experiências</p>
+        </div>
+
+        <div class="testimonials-grid">
+            <div class="testimonial-card animate-on-scroll">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">JE</div>
+                    <div class="testimonial-info">
+                        <h4>Jeferson Eidt</h4>
+                        <p>Técnico Agrícola • SC</p>
+                    </div>
+                </div>
+                <div class="testimonial-text">
+                    Economizo mais de 1 hora em cada visita. O que antes levava metade do meu dia agora faço no caminho entre fazendas pelo celular.
+                </div>
+            </div>
+
+            <div class="testimonial-card animate-on-scroll">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">MR</div>
+                    <div class="testimonial-info">
+                        <h4>Moisés Rodrigues</h4>
+                        <p>Zootecnista • MS</p>
+                    </div>
+                </div>
+                <div class="testimonial-text">
+                    Meus clientes ficaram impressionados com a qualidade dos relatórios. Parece que tenho uma equipe inteira trabalhando comigo.
+                </div>
+            </div>
+
+            <div class="testimonial-card animate-on-scroll">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">TR</div>
+                    <div class="testimonial-info">
+                        <h4>Tony Rocha</h4>
+                        <p>Consultor Técnico • MG</p>
+                    </div>
+                </div>
+                <div class="testimonial-text">
+                    A facilidade de usar pelo WhatsApp foi decisiva. Não preciso aprender nenhum sistema complicado, só envio as fotos e pronto.
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Pricing -->
     <section class="pricing" id="pricing">
         <div class="section-header animate-on-scroll">
@@ -1261,8 +1461,10 @@
             </div>
 
             <form class="pricing-form" id="pricingForm">
-                <input type="text" name="name" placeholder="Seu nome completo" required>
-                <input type="tel" name="whatsapp" placeholder="Seu WhatsApp com DDD" required>
+                <label for="pricing-name" class="sr-only">Seu nome completo</label>
+                <input type="text" id="pricing-name" name="name" placeholder="Seu nome completo" required>
+                <label for="pricing-whatsapp" class="sr-only">Seu WhatsApp com DDD</label>
+                <input type="tel" id="pricing-whatsapp" name="whatsapp" placeholder="Seu WhatsApp com DDD" required>
                 <button type="submit" class="cta-button">Começar Agora — 7 dias grátis</button>
             </form>
             <div id="pricingMessage"></div>
@@ -1348,7 +1550,7 @@
 
     <!-- Footer -->
     <footer>
-        <img src="logo-optimized.png" alt="Voxy Agro" class="footer-logo">
+        <img src="logo-transparent.png" alt="Voxy Agro" class="footer-logo">
         <p>&copy; 2026 Voxy Agro. Todos os direitos reservados.</p>
         <p>
             Dúvidas? <a href="https://wa.me/5534991407772">WhatsApp (34) 99140-7772</a>
@@ -1360,6 +1562,17 @@
         const nav = document.getElementById('nav');
         window.addEventListener('scroll', () => {
             nav.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Floating CTA - appears after 50% scroll
+        const floatingCta = document.getElementById('floatingCta');
+        window.addEventListener('scroll', () => {
+            const scrollPercentage = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+            if (scrollPercentage > 20 && window.scrollY > 300) {
+                floatingCta.classList.add('visible');
+            } else {
+                floatingCta.classList.remove('visible');
+            }
         });
 
         // Scroll animations
