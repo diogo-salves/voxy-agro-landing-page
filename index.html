@@ -152,10 +152,11 @@
             top: 0;
             width: 100%;
             padding: 1.25rem 2rem;
-            background: rgba(250, 249, 247, 0.9);
+            background: rgb(250, 249, 247); /* Opaco - corrige bug de transparência */
+            -webkit-backdrop-filter: blur(20px);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(26, 74, 74, 0.08);
-            z-index: 1000;
+            z-index: 9999; /* Aumentado para garantir que fique acima */
             transition: all 0.3s ease;
         }
 
@@ -984,11 +985,11 @@
             }
 
             .hero-text {
-                order: 1;
+                order: 0; /* Texto aparece PRIMEIRO no mobile */
             }
 
             .hero-visual {
-                order: 0;
+                order: 1; /* Imagem aparece DEPOIS no mobile */
                 margin-bottom: var(--space-md);
             }
 
@@ -1262,9 +1263,13 @@
 
             <div class="hero-visual">
                 <div class="phone-mockup">
-                    <img src="whatsapp-conversation-real.png"
+                    <img src="whatsapp-conversation-optimized.png"
                          alt="Conversa real com o Voxy Agro gerando relatório técnico"
-                         style="width: 100%; border-radius: 24px; display: block;">
+                         width="400"
+                         height="867"
+                         loading="eager"
+                         fetchpriority="high"
+                         style="width: 100%; height: auto; border-radius: 24px; display: block;">
                 </div>
             </div>
         </div>
@@ -1550,7 +1555,7 @@
 
     <!-- Footer -->
     <footer>
-        <img src="logo-clean.png" alt="Voxy Agro" class="footer-logo">
+        <img src="logo-clean.png" alt="Voxy Agro" class="footer-logo" loading="lazy">
         <p>&copy; 2026 Voxy Agro. Todos os direitos reservados.</p>
         <p>
             Dúvidas? <a href="https://wa.me/5534991407772">WhatsApp (34) 99140-7772</a>
