@@ -680,9 +680,15 @@
             background: var(--white);
         }
 
-        .pricing-card {
-            max-width: 520px;
+        .pricing-grid {
+            max-width: 1100px;
             margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-lg);
+        }
+
+        .pricing-card {
             background: var(--cream);
             border: 2px solid rgba(26, 74, 74, 0.1);
             border-radius: var(--radius-xl);
@@ -690,6 +696,13 @@
             text-align: center;
             position: relative;
             overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--amber);
         }
 
         .pricing-card::before {
@@ -814,12 +827,25 @@
             cursor: pointer;
             transition: all 0.3s ease;
             margin-top: var(--space-sm);
+            text-decoration: none;
+            display: block;
         }
 
         .cta-button:hover {
             background: var(--teal-light);
             transform: translateY(-2px);
             box-shadow: 0 8px 24px rgba(26, 74, 74, 0.25);
+        }
+
+        .cta-button.secondary {
+            background: var(--amber);
+            border: 2px solid var(--amber);
+        }
+
+        .cta-button.secondary:hover {
+            background: var(--amber-dark);
+            border-color: var(--amber-dark);
+            box-shadow: 0 8px 24px rgba(199, 140, 60, 0.3);
         }
 
         .guarantee {
@@ -1010,6 +1036,11 @@
                 grid-template-columns: 1fr;
             }
 
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-md);
+            }
+
             .stats-content {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -1122,6 +1153,13 @@
             color: var(--white);
             font-weight: 700;
             font-size: 1.25rem;
+            overflow: hidden;
+        }
+
+        .testimonial-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .testimonial-info h4 {
@@ -1241,7 +1279,7 @@
                     <span class="badge-dot"></span>
                     Usado por técnicos em 3 países
                 </span>
-                <h1>Relatórios Técnicos em <span class="highlight">5 Minutos</span></h1>
+                <h1>Faça seus relatórios de visitas em <span class="highlight">5 minutos!</span></h1>
                 <p class="hero-subtitle">
                     Envie fotos e áudios da visita pelo WhatsApp. A inteligência artificial elabora o documento. Você recebe o PDF profissional pronto.
                 </p>
@@ -1251,7 +1289,7 @@
                     <input type="tel" id="hero-whatsapp" name="whatsapp" placeholder="Seu WhatsApp com DDD" required>
                     <button type="submit">Testar Grátis</button>
                 </form>
-                <p class="form-note">7 dias grátis, sem cartão de crédito</p>
+                <p class="form-note">7 dias grátis para testar</p>
                 <div id="heroMessage"></div>
             </div>
 
@@ -1366,48 +1404,27 @@
     <!-- Testimonials -->
     <section class="testimonials">
         <div class="section-header animate-on-scroll">
-            <p class="section-label">Depoimentos</p>
+            <p class="section-label">Depoimento</p>
             <h2>Quem já usa o Voxy</h2>
-            <p class="section-subtitle">Técnicos reais compartilham suas experiências</p>
+            <p class="section-subtitle">Técnico real compartilha sua experiência</p>
         </div>
 
         <div class="testimonials-grid">
-            <div class="testimonial-card animate-on-scroll">
+            <div class="testimonial-card animate-on-scroll" style="max-width: 700px; margin: 0 auto;">
                 <div class="testimonial-header">
-                    <div class="testimonial-avatar">JE</div>
-                    <div class="testimonial-info">
-                        <h4>Jeferson Eidt</h4>
-                        <p>Técnico Agrícola • SC</p>
+                    <div class="testimonial-avatar">
+                        <picture>
+                            <source srcset="tony-rocha.webp" type="image/webp">
+                            <img src="tony-rocha.png" alt="Tony Rocha">
+                        </picture>
                     </div>
-                </div>
-                <div class="testimonial-text">
-                    Economizo mais de 1 hora em cada visita. O que antes levava metade do meu dia agora faço no caminho entre fazendas pelo celular.
-                </div>
-            </div>
-
-            <div class="testimonial-card animate-on-scroll">
-                <div class="testimonial-header">
-                    <div class="testimonial-avatar">MR</div>
-                    <div class="testimonial-info">
-                        <h4>Moisés Rodrigues</h4>
-                        <p>Zootecnista • MS</p>
-                    </div>
-                </div>
-                <div class="testimonial-text">
-                    Meus clientes ficaram impressionados com a qualidade dos relatórios. Parece que tenho uma equipe inteira trabalhando comigo.
-                </div>
-            </div>
-
-            <div class="testimonial-card animate-on-scroll">
-                <div class="testimonial-header">
-                    <div class="testimonial-avatar">TR</div>
                     <div class="testimonial-info">
                         <h4>Tony Rocha</h4>
-                        <p>Consultor Técnico • MG</p>
+                        <p>Rocha Agro Soluções • MG</p>
                     </div>
                 </div>
                 <div class="testimonial-text">
-                    A facilidade de usar pelo WhatsApp foi decisiva. Não preciso aprender nenhum sistema complicado, só envio as fotos e pronto.
+                    Já me ajudou demais, antigamente eu ficava 1:30 fazendo relatório, pra vc ter ideia já fiz um relatório saindo da fazenda. Quando eu tava saindo para a outra fazenda o relatório já ficou pronto eu já mandei!
                 </div>
             </div>
         </div>
@@ -1417,65 +1434,128 @@
     <section class="pricing" id="pricing">
         <div class="section-header animate-on-scroll">
             <p class="section-label">Investimento</p>
-            <h2>Simples e transparente</h2>
-            <p class="section-subtitle">Um plano que cabe no seu bolso e economiza seu tempo</p>
+            <h2>Escolha a melhor opção para você</h2>
+            <p class="section-subtitle">Planos flexíveis para técnicos autônomos e empresas</p>
         </div>
 
-        <div class="pricing-card animate-on-scroll">
-            <span class="pricing-badge">Mais Popular</span>
+        <div class="pricing-grid">
+            <!-- Técnico Autônomo -->
+            <div class="pricing-card animate-on-scroll">
+                <span class="pricing-badge">Mais Popular</span>
 
-            <div class="price">
-                <span class="price-currency">R$</span>
-                <span class="price-value">79</span>
-                <span class="price-period">/mês</span>
+                <h3 style="font-family: var(--font-display); font-size: 1.75rem; color: var(--teal); margin-bottom: var(--space-md);">Técnico Autônomo</h3>
+
+                <div class="price">
+                    <span class="price-currency">R$</span>
+                    <span class="price-value">79</span>
+                    <span class="price-period">/mês</span>
+                </div>
+                <p class="price-note">Menos de R$ 3 por dia. Quanto vale 2 horas do seu tempo?</p>
+
+                <div class="price-features">
+                    <div class="price-feature">
+                        <span class="check-icon">✓</span>
+                        <span>Relatórios ilimitados</span>
+                    </div>
+                    <div class="price-feature">
+                        <span class="check-icon">✓</span>
+                        <span>Análise de fotos com IA</span>
+                    </div>
+                    <div class="price-feature">
+                        <span class="check-icon">✓</span>
+                        <span>Transcrição de áudios</span>
+                    </div>
+                    <div class="price-feature">
+                        <span class="check-icon">✓</span>
+                        <span>PDFs com sua logo</span>
+                    </div>
+                    <div class="price-feature">
+                        <span class="check-icon">✓</span>
+                        <span>Histórico completo na nuvem</span>
+                    </div>
+                    <div class="price-feature">
+                        <span class="check-icon">✓</span>
+                        <span>Suporte via WhatsApp</span>
+                    </div>
+                    <div class="price-feature">
+                        <span class="check-icon">✓</span>
+                        <span>7 dias grátis para testar</span>
+                    </div>
+                </div>
+
+                <form class="pricing-form" id="pricingForm">
+                    <label for="pricing-name" class="sr-only">Seu nome completo</label>
+                    <input type="text" id="pricing-name" name="name" placeholder="Seu nome completo" required>
+                    <label for="pricing-whatsapp" class="sr-only">Seu WhatsApp com DDD</label>
+                    <input type="tel" id="pricing-whatsapp" name="whatsapp" placeholder="Seu WhatsApp com DDD" required>
+                    <button type="submit" class="cta-button">Começar Agora — 7 dias grátis</button>
+                </form>
+                <div id="pricingMessage"></div>
+
+                <div class="guarantee">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                    Cancele quando quiser, sem multa
+                </div>
             </div>
-            <p class="price-note">Menos de R$ 3 por dia. Quanto vale 2 horas do seu tempo?</p>
 
-            <div class="price-features">
-                <div class="price-feature">
-                    <span class="check-icon">✓</span>
-                    <span>Relatórios ilimitados</span>
-                </div>
-                <div class="price-feature">
-                    <span class="check-icon">✓</span>
-                    <span>Análise de fotos com IA</span>
-                </div>
-                <div class="price-feature">
-                    <span class="check-icon">✓</span>
-                    <span>Transcrição de áudios</span>
-                </div>
-                <div class="price-feature">
-                    <span class="check-icon">✓</span>
-                    <span>PDFs com sua logo</span>
-                </div>
-                <div class="price-feature">
-                    <span class="check-icon">✓</span>
-                    <span>Histórico completo na nuvem</span>
-                </div>
-                <div class="price-feature">
-                    <span class="check-icon">✓</span>
-                    <span>Suporte via WhatsApp</span>
-                </div>
-                <div class="price-feature">
-                    <span class="check-icon">✓</span>
-                    <span>7 dias grátis para testar</span>
-                </div>
-            </div>
+            <!-- Empresas -->
+            <div class="pricing-card animate-on-scroll">
+                <span class="pricing-badge" style="background: var(--teal);">Empresas</span>
 
-            <form class="pricing-form" id="pricingForm">
-                <label for="pricing-name" class="sr-only">Seu nome completo</label>
-                <input type="text" id="pricing-name" name="name" placeholder="Seu nome completo" required>
-                <label for="pricing-whatsapp" class="sr-only">Seu WhatsApp com DDD</label>
-                <input type="tel" id="pricing-whatsapp" name="whatsapp" placeholder="Seu WhatsApp com DDD" required>
-                <button type="submit" class="cta-button">Começar Agora — 7 dias grátis</button>
-            </form>
-            <div id="pricingMessage"></div>
+                <h3 style="font-family: var(--font-display); font-size: 1.75rem; color: var(--teal); margin-bottom: var(--space-md);">Plano Empresarial</h3>
 
-            <div class="guarantee">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                </svg>
-                Cancele quando quiser, sem multa
+                <div class="price">
+                    <span class="price-value" style="font-size: 2.5rem;">Personalizado</span>
+                </div>
+                <p class="price-note">Soluções sob medida para sua equipe técnica</p>
+
+                <div class="price-features">
+                    <div class="price-feature">
+                        <span class="check-icon">✓</span>
+                        <span>Múltiplos usuários</span>
+                    </div>
+                    <div class="price-feature">
+                        <span class="check-icon">✓</span>
+                        <span>Painel administrativo</span>
+                    </div>
+                    <div class="price-feature">
+                        <span class="check-icon">✓</span>
+                        <span>Relatórios ilimitados</span>
+                    </div>
+                    <div class="price-feature">
+                        <span class="check-icon">✓</span>
+                        <span>Análise de fotos com IA</span>
+                    </div>
+                    <div class="price-feature">
+                        <span class="check-icon">✓</span>
+                        <span>Templates personalizados</span>
+                    </div>
+                    <div class="price-feature">
+                        <span class="check-icon">✓</span>
+                        <span>Integração com sistemas</span>
+                    </div>
+                    <div class="price-feature">
+                        <span class="check-icon">✓</span>
+                        <span>Suporte prioritário</span>
+                    </div>
+                </div>
+
+                <a href="https://wa.me/5534991407772?text=Quero%20saber%20mais%20sobre%20o%20Voxy%20Agro%20para%20empresas"
+                   class="cta-button secondary"
+                   target="_blank"
+                   style="margin-top: var(--space-lg);">
+                    Falar com Consultor
+                </a>
+
+                <div class="guarantee">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M12 6v6l4 2"/>
+                    </svg>
+                    Resposta em até 24h
+                </div>
             </div>
         </div>
     </section>
@@ -1645,7 +1725,7 @@
             }
 
             // Monta mensagem para WhatsApp
-            const message = `Olá! Quero testar o Voxy Agro por 7 dias grátis.%0A%0ANome: ${name}%0AWhatsApp: ${whatsapp}%0AFonte: Landing Page v2`;
+            const message = `Olá! Quero testar o Voxy Agro por 7 dias grátis.`;
 
             // Dispara evento de Lead no Meta Pixel
             if (typeof fbq !== 'undefined') {
