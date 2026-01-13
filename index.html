@@ -6,9 +6,9 @@
     <title>Voxy Agro - Relatórios Técnicos em 5 Minutos</title>
     <meta name="description" content="Transforme suas fotos e áudios em relatórios técnicos profissionais. Direto no WhatsApp.">
 
-    <!-- Preload recursos críticos -->
-    <link rel="preload" as="image" href="whatsapp-conversation-hq.png" fetchpriority="high">
-    <link rel="preload" as="image" href="logo-clean.png">
+    <!-- Preload recursos críticos (WebP) -->
+    <link rel="preload" as="image" href="whatsapp-conversation.webp" type="image/webp" fetchpriority="high">
+    <link rel="preload" as="image" href="logo-clean.webp" type="image/webp">
 
     <!-- Preconnects críticos -->
     <link rel="preconnect" href="https://connect.facebook.net" crossorigin>
@@ -1225,7 +1225,10 @@
     <!-- Navigation -->
     <nav id="nav">
         <div class="nav-content">
-            <img src="logo-clean.png" alt="Voxy Agro" class="logo">
+            <picture>
+                <source srcset="logo-clean.webp" type="image/webp">
+                <img src="logo-clean.png" alt="Voxy Agro" class="logo">
+            </picture>
             <a href="#pricing" class="nav-cta">Começar Agora</a>
         </div>
     </nav>
@@ -1254,13 +1257,16 @@
 
             <div class="hero-visual">
                 <div class="phone-mockup">
-                    <img src="whatsapp-conversation-hq.png"
-                         alt="Conversa real com o Voxy Agro gerando relatório técnico"
-                         width="700"
-                         height="1517"
-                         loading="eager"
-                         fetchpriority="high"
-                         style="width: 100%; height: auto; border-radius: 24px; display: block;">
+                    <picture>
+                        <source srcset="whatsapp-conversation.webp" type="image/webp">
+                        <img src="whatsapp-conversation-hq.png"
+                             alt="Conversa real com o Voxy Agro gerando relatório técnico"
+                             width="700"
+                             height="1517"
+                             loading="eager"
+                             fetchpriority="high"
+                             style="width: 100%; height: auto; border-radius: 24px; display: block;">
+                    </picture>
                 </div>
             </div>
         </div>
@@ -1546,7 +1552,10 @@
 
     <!-- Footer -->
     <footer>
-        <img src="logo-clean.png" alt="Voxy Agro" class="footer-logo" loading="lazy">
+        <picture>
+            <source srcset="logo-clean.webp" type="image/webp">
+            <img src="logo-clean.png" alt="Voxy Agro" class="footer-logo" loading="lazy">
+        </picture>
         <p>&copy; 2026 Voxy Agro. Todos os direitos reservados.</p>
         <p>
             Dúvidas? <a href="https://wa.me/5534991407772">WhatsApp (34) 99140-7772</a>
