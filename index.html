@@ -1393,10 +1393,14 @@
                     Envie fotos e áudios da visita pelo WhatsApp. A inteligência artificial elabora o documento. Você recebe o PDF profissional pronto.
                 </p>
 
-                <form class="hero-form" id="heroForm">
-                    <label for="hero-whatsapp" class="sr-only">Seu WhatsApp com DDD</label>
-                    <input type="tel" id="hero-whatsapp" name="whatsapp" placeholder="Seu WhatsApp com DDD" required>
-                    <button type="submit">Testar Grátis</button>
+                <form class="hero-form" id="heroForm" style="flex-direction: column; gap: 0.75rem;">
+                    <label for="hero-name" class="sr-only">Seu nome completo</label>
+                    <input type="text" id="hero-name" name="name" placeholder="Seu nome completo" required style="width: 100%;">
+                    <div style="display: flex; gap: 0.75rem; width: 100%;">
+                        <label for="hero-whatsapp" class="sr-only">Seu WhatsApp com DDD</label>
+                        <input type="tel" id="hero-whatsapp" name="whatsapp" placeholder="Seu WhatsApp com DDD" required style="flex: 1;">
+                        <button type="submit">Testar Grátis</button>
+                    </div>
                 </form>
                 <p class="form-note">7 dias grátis para testar</p>
                 <div id="heroMessage"></div>
@@ -1818,41 +1822,84 @@
             input.addEventListener('input', () => maskPhone(input));
         });
 
-        // Form submission - Redireciona direto para WhatsApp
-        function handleFormSubmit(e, formId, messageId) {
+        // API URL - produção
+        const API_URL = 'https://voxy-api-voxy-agro-v3.ews7qr.easypanel.host';
+
+        // Form submission - Chama API e redireciona para WhatsApp
+        async function handleFormSubmit(e, formId, messageId) {
             e.preventDefault();
             const form = document.getElementById(formId);
             const messageDiv = document.getElementById(messageId);
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.textContent;
 
             const formData = new FormData(form);
-            const name = formData.get('name') || 'Lead';
+            const name = formData.get('name')?.trim();
             const whatsapp = formData.get('whatsapp').replace(/\D/g, '');
+
+            // Validações
+            if (!name || name.length < 3) {
+                showMessage(messageDiv, 'Por favor, insira seu nome completo', 'error');
+                return;
+            }
 
             if (whatsapp.length < 10) {
                 showMessage(messageDiv, 'Por favor, insira um número válido', 'error');
                 return;
             }
 
-            // Monta mensagem para WhatsApp
-            const message = `Olá! Quero testar o Voxy Agro por 7 dias grátis.`;
+            // Desabilita botão durante request
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Ativando...';
 
-            // Dispara evento de Lead no Meta Pixel
-            if (typeof fbq !== 'undefined') {
-                fbq('track', 'Lead', {
-                    content_name: 'trial_signup',
-                    content_category: 'landing_page_v2',
-                    value: 79.00,
-                    currency: 'BRL'
+            try {
+                // Chama API para criar trial
+                const response = await fetch(`${API_URL}/api/start-trial`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        name: name,
+                        whatsapp: whatsapp
+                    })
                 });
+
+                const data = await response.json();
+
+                if (!response.ok) {
+                    showMessage(messageDiv, data.error || 'Erro ao ativar trial', 'error');
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = originalBtnText;
+                    return;
+                }
+
+                // Dispara evento de Lead no Meta Pixel
+                if (typeof fbq !== 'undefined') {
+                    fbq('track', 'Lead', {
+                        content_name: 'trial_signup',
+                        content_category: 'landing_page_v2',
+                        value: 79.00,
+                        currency: 'BRL'
+                    });
+                }
+
+                // Mostra mensagem de sucesso
+                showMessage(messageDiv, '✅ Trial ativado! Abrindo WhatsApp...', 'success');
+                form.reset();
+
+                // Redireciona para WhatsApp após pequeno delay
+                setTimeout(() => {
+                    window.open(data.whatsapp_url, '_blank');
+                }, 500);
+
+            } catch (error) {
+                console.error('Erro:', error);
+                showMessage(messageDiv, 'Erro de conexão. Tente novamente.', 'error');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalBtnText;
             }
-
-            // Redireciona para WhatsApp
-            const whatsappLink = `https://wa.me/5534991407772?text=${message}`;
-            window.open(whatsappLink, '_blank');
-
-            // Mostra mensagem de sucesso
-            showMessage(messageDiv, '✅ Abrindo WhatsApp... Complete sua solicitação por lá!', 'success');
-            form.reset();
         }
 
         function showMessage(div, text, type) {
