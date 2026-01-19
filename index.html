@@ -1890,8 +1890,8 @@
 
                 // Redireciona para WhatsApp após pequeno delay
                 setTimeout(() => {
-                    window.open(data.whatsapp_url, '_blank');
-                }, 500);
+                    window.location.href = data.whatsapp_url;
+                }, 800);
 
             } catch (error) {
                 console.error('Erro:', error);
