@@ -291,9 +291,17 @@
         /* Hero Form */
         .hero-form {
             display: flex;
+            flex-direction: column;
             gap: 0.75rem;
             max-width: 480px;
             margin-bottom: var(--space-sm);
+            width: 100%;
+        }
+
+        .hero-form-row {
+            display: flex;
+            gap: 0.75rem;
+            width: 100%;
         }
 
         .hero-form input {
@@ -306,6 +314,8 @@
             background: var(--white);
             transition: all 0.3s ease;
             color: var(--text);
+            width: 100%;
+            min-width: 0; /* Previne overflow em flex */
         }
 
         .hero-form input::placeholder {
@@ -330,6 +340,7 @@
             cursor: pointer;
             transition: all 0.3s ease;
             white-space: nowrap;
+            flex-shrink: 0;
         }
 
         .hero-form button:hover {
@@ -996,27 +1007,53 @@
 
         /* Responsive */
         @media (max-width: 968px) {
+            nav {
+                padding: 1rem 1rem;
+            }
+
+            nav.scrolled {
+                padding: 0.75rem 1rem;
+            }
+
+            .logo {
+                height: 50px;
+            }
+
+            .nav-cta {
+                padding: 0.625rem 1rem;
+                font-size: 0.85rem;
+            }
+
+            .hero {
+                padding: var(--space-lg) var(--space-sm);
+                padding-top: calc(var(--space-lg) + 70px);
+            }
+
             .hero-content {
                 grid-template-columns: 1fr;
                 text-align: center;
+                gap: var(--space-lg);
             }
 
             .hero-text {
-                order: 0; /* Texto aparece PRIMEIRO no mobile */
+                order: 0;
             }
 
             .hero-visual {
-                order: 1; /* Imagem aparece DEPOIS no mobile */
+                order: 1;
                 margin-bottom: var(--space-md);
             }
 
             .hero-subtitle {
                 margin: 0 auto var(--space-lg);
+                max-width: 100%;
             }
 
             .hero-form {
                 margin: 0 auto var(--space-sm);
                 justify-content: center;
+                max-width: 100%;
+                width: 100%;
             }
 
             .form-note {
@@ -1047,17 +1084,72 @@
         }
 
         @media (max-width: 640px) {
+            nav {
+                padding: 0.875rem 1rem;
+            }
+
+            .logo {
+                height: 44px;
+            }
+
+            .nav-cta {
+                padding: 0.5rem 0.875rem;
+                font-size: 0.8rem;
+            }
+
+            .hero {
+                padding: var(--space-md) var(--space-sm);
+                padding-top: calc(var(--space-md) + 65px);
+            }
+
+            .badge {
+                font-size: 0.75rem;
+                padding: 0.5rem 1rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+                line-height: 1.15;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+                line-height: 1.6;
+                padding: 0;
+            }
+
+            /* Form mobile - empilhamento completo */
             .hero-form {
-                flex-direction: column;
                 max-width: 100%;
+                width: 100%;
+            }
+
+            .hero-form input {
+                padding: 1rem 1.25rem;
+                font-size: 1rem;
             }
 
             .hero-form button {
                 width: 100%;
+                padding: 1rem 1.5rem;
+                font-size: 1rem;
             }
 
-            h1 {
-                font-size: 2.25rem;
+            /* Empilha a linha WhatsApp + botão no mobile */
+            .hero-form-row {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            .hero-form-row input,
+            .hero-form-row button {
+                width: 100%;
+                flex: none;
+            }
+
+            .form-note {
+                font-size: 0.8rem;
+                text-align: center;
             }
 
             h2 {
@@ -1075,6 +1167,11 @@
 
             .stat-number {
                 font-size: 2.5rem;
+            }
+
+            .phone-mockup {
+                max-width: 280px;
+                padding: 0.75rem;
             }
 
             /* Pricing mobile optimization */
@@ -1393,12 +1490,12 @@
                     Envie fotos e áudios da visita pelo WhatsApp. A inteligência artificial elabora o documento. Você recebe o PDF profissional pronto.
                 </p>
 
-                <form class="hero-form" id="heroForm" style="flex-direction: column; gap: 0.75rem;">
+                <form class="hero-form" id="heroForm">
                     <label for="hero-name" class="sr-only">Seu nome completo</label>
-                    <input type="text" id="hero-name" name="name" placeholder="Seu nome completo" required style="width: 100%;">
-                    <div style="display: flex; gap: 0.75rem; width: 100%;">
+                    <input type="text" id="hero-name" name="name" placeholder="Seu nome completo" required>
+                    <div class="hero-form-row">
                         <label for="hero-whatsapp" class="sr-only">Seu WhatsApp com DDD</label>
-                        <input type="tel" id="hero-whatsapp" name="whatsapp" placeholder="Seu WhatsApp com DDD" required style="flex: 1;">
+                        <input type="tel" id="hero-whatsapp" name="whatsapp" placeholder="Seu WhatsApp com DDD" required>
                         <button type="submit">Testar Grátis</button>
                     </div>
                 </form>
