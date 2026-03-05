@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Politica de Privacidade - Voxy Agro</title>
+    <meta name="description" content="Politica de Privacidade da Voxy Agro. Saiba como coletamos, usamos e protegemos seus dados.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --teal: #1a4a4a;
+            --teal-light: #2d6b6b;
+            --teal-bg: #e8f0ef;
+            --amber: #c78c3c;
+            --amber-light: #d4a35a;
+            --amber-dark: #a67428;
+            --cream: #faf9f7;
+            --cream-dark: #f0ede8;
+            --text: #1a4a4a;
+            --text-light: #5a7a7a;
+            --white: #ffffff;
+
+            --font-display: 'DM Serif Display', Georgia, serif;
+            --font-body: 'DM Sans', -apple-system, sans-serif;
+
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 2rem;
+            --space-lg: 4rem;
+            --space-xl: 6rem;
+
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+
+            --shadow-sm: 0 2px 8px rgba(26, 74, 74, 0.06);
+            --shadow-md: 0 8px 24px rgba(26, 74, 74, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text);
+            background: var(--cream);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Grain texture overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.03;
+            z-index: 9999;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        }
+
+        /* Header */
+        .header {
+            background: var(--teal);
+            padding: var(--space-md) var(--space-md);
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header a {
+            text-decoration: none;
+        }
+
+        .header-logo {
+            height: 50px;
+        }
+
+        .header-back {
+            color: var(--amber-light);
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .header-back:hover {
+            color: var(--white);
+        }
+
+        /* Content */
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: var(--space-lg) var(--space-md);
+        }
+
+        .content h1 {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            color: var(--teal);
+            margin-bottom: var(--space-xs);
+        }
+
+        .content .updated {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: var(--space-lg);
+        }
+
+        .content h2 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--teal);
+            margin-top: var(--space-md);
+            margin-bottom: var(--space-sm);
+            padding-bottom: var(--space-xs);
+            border-bottom: 2px solid var(--teal-bg);
+        }
+
+        .content p {
+            color: var(--text-light);
+            margin-bottom: var(--space-sm);
+            line-height: 1.8;
+        }
+
+        .content ul {
+            color: var(--text-light);
+            margin-bottom: var(--space-sm);
+            padding-left: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .content li {
+            margin-bottom: var(--space-xs);
+        }
+
+        .content strong {
+            color: var(--text);
+        }
+
+        .content a {
+            color: var(--amber-dark);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .content a:hover {
+            color: var(--teal);
+        }
+
+        .highlight-box {
+            background: var(--teal-bg);
+            border-left: 4px solid var(--teal);
+            padding: var(--space-sm) var(--space-md);
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            margin: var(--space-md) 0;
+        }
+
+        .highlight-box p {
+            color: var(--teal);
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer {
+            padding: var(--space-lg) var(--space-md);
+            background: var(--teal);
+            text-align: center;
+        }
+
+        .footer-logo {
+            height: 75px;
+            margin-bottom: var(--space-md);
+        }
+
+        footer p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+            margin-bottom: var(--space-sm);
+        }
+
+        footer a {
+            color: var(--amber-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: var(--white);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .content h1 {
+                font-size: 1.8rem;
+            }
+
+            .content h2 {
+                font-size: 1.3rem;
+            }
+
+            .content {
+                padding: var(--space-md) var(--space-sm);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <div class="header-inner">
+            <a href="/">
+                <picture>
+                    <source srcset="logo-clean.webp" type="image/webp">
+                    <img src="logo-clean.png" alt="Voxy Agro" class="header-logo">
+                </picture>
+            </a>
+            <a href="/" class="header-back">Voltar ao inicio</a>
+        </div>
+    </div>
+
+    <!-- Content -->
+    <main class="content">
+        <h1>Politica de Privacidade</h1>
+        <p class="updated">Ultima atualizacao: 05 de marco de 2026</p>
+
+        <div class="highlight-box">
+            <p>A Voxy Agro valoriza a privacidade dos seus usuarios. Esta politica descreve como coletamos, usamos e protegemos seus dados pessoais.</p>
+        </div>
+
+        <h2>1. Dados que Coletamos</h2>
+        <p>Coletamos os seguintes dados pessoais quando voce interage com nossos servicos:</p>
+        <ul>
+            <li><strong>Nome completo</strong> - fornecido nos formularios do site</li>
+            <li><strong>Numero de WhatsApp</strong> - fornecido nos formularios do site</li>
+            <li><strong>Dados de navegacao</strong> - paginas visitadas, tempo de permanencia, dispositivo e navegador utilizado (via Meta Pixel/Facebook Pixel)</li>
+            <li><strong>Mensagens e midias enviadas via WhatsApp</strong> - fotos, audios e textos enviados ao nosso agente de IA para geracao de relatorios</li>
+        </ul>
+
+        <h2>2. Como Usamos seus Dados</h2>
+        <p>Seus dados sao utilizados para:</p>
+        <ul>
+            <li><strong>Prestacao do servico</strong> - gerar relatorios tecnicos a partir das informacoes que voce envia pelo WhatsApp</li>
+            <li><strong>Contato comercial</strong> - entrar em contato para apresentar o servico e oferecer suporte</li>
+            <li><strong>Melhoria do servico</strong> - analisar o uso da plataforma para aprimorar a experiencia</li>
+            <li><strong>Marketing</strong> - campanhas de anuncios segmentados via Meta Ads (Facebook/Instagram)</li>
+        </ul>
+
+        <h2>3. Meta Pixel (Facebook Pixel)</h2>
+        <p>Utilizamos o <strong>Meta Pixel</strong> em nosso site para:</p>
+        <ul>
+            <li>Medir a eficacia das nossas campanhas de anuncios</li>
+            <li>Criar publicos personalizados para anuncios</li>
+            <li>Rastrear conversoes (cadastros no formulario)</li>
+        </ul>
+        <p>O Meta Pixel coleta dados como endereco IP, navegador, paginas visitadas e acoes realizadas no site. Esses dados sao processados pela Meta Platforms, Inc. conforme a <a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener noreferrer">Politica de Privacidade da Meta</a>.</p>
+
+        <h2>4. Compartilhamento de Dados</h2>
+        <p>Seus dados podem ser compartilhados com:</p>
+        <ul>
+            <li><strong>Meta Platforms (Facebook)</strong> - dados de navegacao via Pixel para fins de publicidade</li>
+            <li><strong>Supabase</strong> - armazenamento seguro dos dados de cadastro e relatorios</li>
+            <li><strong>OpenAI</strong> - processamento de textos e imagens para geracao dos relatorios via inteligencia artificial</li>
+            <li><strong>Stripe</strong> - processamento de pagamentos (dados de cobranca)</li>
+        </ul>
+        <p>Nao vendemos seus dados pessoais a terceiros.</p>
+
+        <h2>5. Armazenamento e Seguranca</h2>
+        <p>Seus dados sao armazenados em servidores seguros com criptografia. Adotamos medidas tecnicas e organizacionais para proteger suas informacoes contra acesso nao autorizado, perda ou alteracao.</p>
+        <p>Os relatorios gerados e dados de conta sao armazenados no <strong>Supabase</strong>, que utiliza criptografia em transito (TLS) e em repouso.</p>
+
+        <h2>6. Seus Direitos (LGPD)</h2>
+        <p>De acordo com a Lei Geral de Protecao de Dados (Lei 13.709/2018), voce tem direito a:</p>
+        <ul>
+            <li><strong>Acesso</strong> - solicitar uma copia dos seus dados pessoais</li>
+            <li><strong>Correcao</strong> - corrigir dados incompletos ou desatualizados</li>
+            <li><strong>Exclusao</strong> - solicitar a exclusao dos seus dados pessoais</li>
+            <li><strong>Portabilidade</strong> - solicitar a transferencia dos seus dados</li>
+            <li><strong>Revogacao do consentimento</strong> - retirar o consentimento a qualquer momento</li>
+            <li><strong>Informacao</strong> - saber com quem seus dados foram compartilhados</li>
+        </ul>
+        <p>Para exercer qualquer desses direitos, entre em contato pelo WhatsApp <a href="https://wa.me/5534991407772">(34) 99140-7772</a> ou e-mail <a href="mailto:contato@voxyagro.com">contato@voxyagro.com</a>.</p>
+
+        <h2>7. Cookies</h2>
+        <p>Nosso site utiliza cookies e tecnologias semelhantes para:</p>
+        <ul>
+            <li>Garantir o funcionamento correto do site</li>
+            <li>Coletar dados analiticos (Meta Pixel)</li>
+        </ul>
+        <p>Voce pode gerenciar as preferencias de cookies nas configuracoes do seu navegador.</p>
+
+        <h2>8. Retencao de Dados</h2>
+        <p>Seus dados pessoais sao mantidos enquanto sua conta estiver ativa ou conforme necessario para prestar os servicos. Apos o cancelamento, os dados sao retidos por ate <strong>90 dias</strong> para fins de backup e conformidade legal, sendo excluidos apos este periodo.</p>
+
+        <h2>9. Alteracoes nesta Politica</h2>
+        <p>Podemos atualizar esta politica periodicamente. Alteracoes significativas serao comunicadas pelo WhatsApp ou por aviso no site. Recomendamos revisar esta pagina regularmente.</p>
+
+        <h2>10. Contato</h2>
+        <p>Em caso de duvidas sobre esta politica ou sobre o tratamento dos seus dados pessoais:</p>
+        <ul>
+            <li><strong>WhatsApp:</strong> <a href="https://wa.me/5534991407772">(34) 99140-7772</a></li>
+            <li><strong>E-mail:</strong> <a href="mailto:contato@voxyagro.com">contato@voxyagro.com</a></li>
+        </ul>
+
+        <div class="highlight-box">
+            <p>Ao utilizar os servicos da Voxy Agro, voce concorda com os termos descritos nesta Politica de Privacidade.</p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <picture>
+            <source srcset="logo-clean.webp" type="image/webp">
+            <img src="logo-clean.png" alt="Voxy Agro" class="footer-logo" loading="lazy">
+        </picture>
+        <p>&copy; 2026 Voxy Agro. Todos os direitos reservados.</p>
+        <p>
+            Duvidas? <a href="https://wa.me/5534991407772">WhatsApp (34) 99140-7772</a>
+        </p>
+    </footer>
+
+</body>
+</html>
