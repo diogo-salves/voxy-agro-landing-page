@@ -288,65 +288,35 @@
             max-width: 500px;
         }
 
-        /* Hero Form */
-        .hero-form {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-            max-width: 480px;
-            margin-bottom: var(--space-sm);
-            width: 100%;
-        }
-
-        .hero-form-row {
-            display: flex;
-            gap: 0.75rem;
-            width: 100%;
-        }
-
-        .hero-form input {
-            flex: 1;
-            padding: 1.125rem 1.5rem;
-            border: 2px solid rgba(26, 74, 74, 0.15);
-            border-radius: var(--radius-sm);
-            font-size: 1rem;
-            font-family: var(--font-body);
-            background: var(--white);
-            transition: all 0.3s ease;
-            color: var(--text);
-            width: 100%;
-            min-width: 0; /* Previne overflow em flex */
-        }
-
-        .hero-form input::placeholder {
-            color: var(--text-light);
-        }
-
-        .hero-form input:focus {
-            outline: none;
-            border-color: var(--amber);
-            box-shadow: 0 0 0 4px rgba(199, 140, 60, 0.15);
-        }
-
-        .hero-form button {
+        /* WhatsApp CTA Button */
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.625rem;
             padding: 1.125rem 2rem;
-            background: var(--teal);
+            background: #25D366;
             color: var(--white);
             border: none;
             border-radius: var(--radius-sm);
-            font-size: 1rem;
-            font-weight: 600;
+            font-size: 1.0625rem;
+            font-weight: 700;
             font-family: var(--font-body);
             cursor: pointer;
             transition: all 0.3s ease;
+            text-decoration: none;
             white-space: nowrap;
-            flex-shrink: 0;
+            margin-bottom: var(--space-sm);
+            box-shadow: 0 4px 16px rgba(37, 211, 102, 0.35);
         }
 
-        .hero-form button:hover {
-            background: var(--teal-light);
+        .whatsapp-btn:hover {
+            background: #1ebe5d;
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(26, 74, 74, 0.25);
+            box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45);
+        }
+
+        .whatsapp-btn svg {
+            flex-shrink: 0;
         }
 
         .form-note {
@@ -692,10 +662,10 @@
         }
 
         .pricing-grid {
-            max-width: 1100px;
+            max-width: 620px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: 1fr;
             gap: var(--space-lg);
         }
 
@@ -801,28 +771,6 @@
         .price-feature span {
             color: var(--text);
             font-size: 1rem;
-        }
-
-        .pricing-form {
-            margin-top: var(--space-md);
-        }
-
-        .pricing-form input {
-            width: 100%;
-            padding: 1rem 1.25rem;
-            border: 2px solid rgba(26, 74, 74, 0.15);
-            border-radius: var(--radius-sm);
-            font-size: 1rem;
-            font-family: var(--font-body);
-            background: var(--white);
-            margin-bottom: 0.75rem;
-            transition: all 0.3s ease;
-        }
-
-        .pricing-form input:focus {
-            outline: none;
-            border-color: var(--amber);
-            box-shadow: 0 0 0 4px rgba(199, 140, 60, 0.15);
         }
 
         .cta-button {
@@ -1049,11 +997,8 @@
                 max-width: 100%;
             }
 
-            .hero-form {
+            .whatsapp-btn {
                 margin: 0 auto var(--space-sm);
-                justify-content: center;
-                max-width: 100%;
-                width: 100%;
             }
 
             .form-note {
@@ -1071,11 +1016,6 @@
 
             .benefits-grid {
                 grid-template-columns: 1fr;
-            }
-
-            .pricing-grid {
-                grid-template-columns: 1fr;
-                gap: var(--space-md);
             }
 
             .stats-content {
@@ -1118,33 +1058,10 @@
                 padding: 0;
             }
 
-            /* Form mobile - empilhamento completo */
-            .hero-form {
-                max-width: 100%;
+            .whatsapp-btn {
                 width: 100%;
-            }
-
-            .hero-form input {
-                padding: 1rem 1.25rem;
+                justify-content: center;
                 font-size: 1rem;
-            }
-
-            .hero-form button {
-                width: 100%;
-                padding: 1rem 1.5rem;
-                font-size: 1rem;
-            }
-
-            /* Empilha a linha WhatsApp + botão no mobile */
-            .hero-form-row {
-                flex-direction: column;
-                gap: 0.75rem;
-            }
-
-            .hero-form-row input,
-            .hero-form-row button {
-                width: 100%;
-                flex: none;
             }
 
             .form-note {
@@ -1242,16 +1159,6 @@
                 width: 18px;
                 height: 18px;
                 font-size: 0.65rem;
-            }
-
-            .pricing-form {
-                margin-top: 0.75rem;
-            }
-
-            .pricing-form input {
-                padding: 0.875rem 1rem;
-                font-size: 0.95rem;
-                margin-bottom: 0.5rem;
             }
 
             .cta-button {
@@ -1490,17 +1397,11 @@
                     Envie fotos e áudios da visita pelo WhatsApp. A inteligência artificial elabora o documento. Você recebe o PDF profissional pronto.
                 </p>
 
-                <form class="hero-form" id="heroForm">
-                    <label for="hero-name" class="sr-only">Seu nome completo</label>
-                    <input type="text" id="hero-name" name="name" placeholder="Seu nome completo" required>
-                    <div class="hero-form-row">
-                        <label for="hero-whatsapp" class="sr-only">Seu WhatsApp com DDD</label>
-                        <input type="tel" id="hero-whatsapp" name="whatsapp" placeholder="Seu WhatsApp com DDD" required>
-                        <button type="submit">Testar Grátis</button>
-                    </div>
-                </form>
-                <p class="form-note">Teste grátis — seu 1º relatório por nossa conta</p>
-                <div id="heroMessage"></div>
+                <a href="https://wa.me/5534991407772?text=Quero%20mais%20informa%C3%A7%C3%B5es%20do%20sistema%20Voxy%20Agro" class="whatsapp-btn" target="_blank" rel="noopener noreferrer">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    Falar no WhatsApp
+                </a>
+                <p class="form-note">Sem formulário — resposta imediata</p>
             </div>
 
             <div class="hero-visual">
@@ -1658,120 +1559,54 @@
     <!-- Pricing -->
     <section class="pricing" id="pricing">
         <div class="section-header animate-on-scroll">
-            <p class="section-label">Investimento</p>
-            <h2>Escolha a melhor opção para você</h2>
-            <p class="section-subtitle">Planos flexíveis para técnicos autônomos e empresas</p>
+            <p class="section-label">Solução para Empresas</p>
+            <h2>Gestão completa para sua equipe de campo</h2>
+            <p class="section-subtitle">Tudo que sua empresa precisa para escalar os relatórios técnicos</p>
         </div>
 
         <div class="pricing-grid">
-            <!-- Técnico Autônomo -->
-            <div class="pricing-card animate-on-scroll">
-                <span class="pricing-badge">Mais Popular</span>
-
-                <h3 style="font-family: var(--font-display); font-size: 1.75rem; color: var(--teal); margin-bottom: var(--space-md);">Técnico Autônomo</h3>
-
-                <div class="price">
-                    <span class="price-currency">R$</span>
-                    <span class="price-value">79</span>
-                    <span class="price-period">/mês</span>
-                </div>
-                <p class="price-note">Menos de R$ 3 por dia. Quanto vale 2 horas do seu tempo?</p>
-
-                <div class="price-features">
-                    <div class="price-feature">
-                        <span class="check-icon">✓</span>
-                        <span>Relatórios ilimitados</span>
-                    </div>
-                    <div class="price-feature">
-                        <span class="check-icon">✓</span>
-                        <span>Análise de fotos com IA</span>
-                    </div>
-                    <div class="price-feature">
-                        <span class="check-icon">✓</span>
-                        <span>Transcrição de áudios</span>
-                    </div>
-                    <div class="price-feature">
-                        <span class="check-icon">✓</span>
-                        <span>PDFs com sua logo</span>
-                    </div>
-                    <div class="price-feature hide-mobile">
-                        <span class="check-icon">✓</span>
-                        <span>Histórico completo na nuvem</span>
-                    </div>
-                    <div class="price-feature hide-mobile">
-                        <span class="check-icon">✓</span>
-                        <span>Suporte via WhatsApp</span>
-                    </div>
-                    <div class="price-feature">
-                        <span class="check-icon">✓</span>
-                        <span>1º relatório grátis para testar</span>
-                    </div>
-                </div>
-
-                <form class="pricing-form" id="pricingForm">
-                    <label for="pricing-name" class="sr-only">Seu nome completo</label>
-                    <input type="text" id="pricing-name" name="name" placeholder="Seu nome completo" required>
-                    <label for="pricing-whatsapp" class="sr-only">Seu WhatsApp com DDD</label>
-                    <input type="tel" id="pricing-whatsapp" name="whatsapp" placeholder="Seu WhatsApp com DDD" required>
-                    <button type="submit" class="cta-button">Começar Agora — Teste Grátis</button>
-                </form>
-                <div id="pricingMessage"></div>
-
-                <div class="guarantee">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                    </svg>
-                    Cancele quando quiser, sem multa
-                </div>
-            </div>
-
             <!-- Empresas -->
             <div class="pricing-card animate-on-scroll">
                 <span class="pricing-badge" style="background: var(--teal);">Empresas</span>
 
-                <h3 style="font-family: var(--font-display); font-size: 1.75rem; color: var(--teal); margin-bottom: var(--space-md); white-space: nowrap;">Para Empresas</h3>
+                <h3 style="font-family: var(--font-display); font-size: 1.75rem; color: var(--teal); margin-bottom: var(--space-md);">Para Empresas</h3>
 
-                <div class="price">
-                    <span class="price-value" style="font-size: 2rem; font-family: var(--font-display);">Sob Medida</span>
-                </div>
-                <p class="price-note">Soluções personalizadas para sua equipe</p>
+                <p class="price-note" style="font-size: 1rem; margin-bottom: var(--space-md);">Solução personalizada — fale com a gente para montar o plano ideal</p>
 
                 <div class="price-features">
                     <div class="price-feature">
                         <span class="check-icon">✓</span>
-                        <span>Múltiplos usuários</span>
+                        <span>CRM de análise de visitas e relatórios</span>
                     </div>
                     <div class="price-feature">
                         <span class="check-icon">✓</span>
-                        <span>Painel administrativo</span>
-                    </div>
-                    <div class="price-feature hide-mobile">
-                        <span class="check-icon">✓</span>
-                        <span>Relatórios ilimitados</span>
+                        <span>Gestão dos relatórios de toda a equipe</span>
                     </div>
                     <div class="price-feature">
                         <span class="check-icon">✓</span>
-                        <span>Análise de fotos com IA</span>
+                        <span>Múltiplos usuários simultâneos</span>
                     </div>
                     <div class="price-feature">
                         <span class="check-icon">✓</span>
-                        <span>Templates personalizados</span>
-                    </div>
-                    <div class="price-feature hide-mobile">
-                        <span class="check-icon">✓</span>
-                        <span>Integração com sistemas</span>
+                        <span>Painel administrativo centralizado</span>
                     </div>
                     <div class="price-feature">
                         <span class="check-icon">✓</span>
-                        <span>Suporte prioritário</span>
+                        <span>Relatórios ilimitados com sua logo</span>
+                    </div>
+                    <div class="price-feature">
+                        <span class="check-icon">✓</span>
+                        <span>Templates personalizados por empresa</span>
+                    </div>
+                    <div class="price-feature">
+                        <span class="check-icon">✓</span>
+                        <span>Suporte prioritário via WhatsApp</span>
                     </div>
                 </div>
 
-                <a href="https://wa.me/5534991407772?text=Quero%20saber%20mais%20sobre%20o%20Voxy%20Agro%20para%20empresas"
-                   class="cta-button secondary"
-                   target="_blank"
-                   style="margin-top: var(--space-lg);">
-                    Falar com Consultor
+                <a href="https://wa.me/5534991407772?text=Quero%20mais%20informa%C3%A7%C3%B5es%20do%20sistema%20Voxy%20Agro" class="cta-button" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;justify-content:center;gap:0.625rem;background:#25D366;box-shadow:0 4px 16px rgba(37,211,102,0.35);margin-top:var(--space-lg);">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    Falar no WhatsApp
                 </a>
 
                 <div class="guarantee">
@@ -1810,16 +1645,6 @@
                 </button>
                 <div class="faq-answer">
                     <p>Se você sabe usar WhatsApp, já sabe usar o Voxy. Não tem app para baixar, não tem login para lembrar. Você envia fotos e áudios como faria para qualquer contato.</p>
-                </div>
-            </div>
-
-            <div class="faq-item animate-on-scroll">
-                <button class="faq-question">
-                    R$ 79/mês não é caro?
-                    <span class="faq-icon">+</span>
-                </button>
-                <div class="faq-answer">
-                    <p>Se você faz 4 relatórios por mês e economiza 1h30 em cada, são 6 horas recuperadas. R$ 79 dividido por 6 horas dá R$ 13/hora. Seu tempo vale muito mais que isso.</p>
                 </div>
             </div>
 
@@ -1937,98 +1762,19 @@
             input.addEventListener('input', () => maskPhone(input));
         });
 
-        // API URL - mudar para produção quando deploy
-        const API_URL = 'https://voxy-api-voxy-agro-v3.ews7qr.easypanel.host';
-
-        // Form submission - Chama API e redireciona para WhatsApp
-        async function handleFormSubmit(e, formId, messageId) {
-            e.preventDefault();
-            const form = document.getElementById(formId);
-            const messageDiv = document.getElementById(messageId);
-            const submitBtn = form.querySelector('button[type="submit"]');
-            const originalBtnText = submitBtn.textContent;
-
-            const formData = new FormData(form);
-            const name = formData.get('name')?.trim();
-            const whatsapp = formData.get('whatsapp').replace(/\D/g, '');
-
-            // Validações
-            if (!name || name.length < 3) {
-                showMessage(messageDiv, 'Por favor, insira seu nome completo', 'error');
-                return;
-            }
-
-            if (whatsapp.length < 10) {
-                showMessage(messageDiv, 'Por favor, insira um número válido', 'error');
-                return;
-            }
-
-            // Desabilita botão durante request
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Ativando...';
-
-            try {
-                // Chama API para criar trial
-                const response = await fetch(`${API_URL}/api/start-trial`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        name: name,
-                        whatsapp: whatsapp
-                    })
-                });
-
-                const data = await response.json();
-
-                if (!response.ok) {
-                    showMessage(messageDiv, data.error || 'Erro ao ativar trial', 'error');
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = originalBtnText;
-                    return;
-                }
-
-                // Dispara evento de Lead no Meta Pixel
+        // WhatsApp CTA - rastreia cliques no Meta Pixel
+        document.querySelectorAll('a[href*="wa.me"]').forEach(btn => {
+            btn.addEventListener('click', () => {
                 if (typeof fbq !== 'undefined') {
                     fbq('track', 'Lead', {
-                        content_name: 'trial_signup',
+                        content_name: 'whatsapp_cta',
                         content_category: 'landing_page_v2',
                         value: 79.00,
                         currency: 'BRL'
                     });
                 }
-
-                // Mostra mensagem de sucesso
-                showMessage(messageDiv, '✅ Trial ativado! Abrindo WhatsApp...', 'success');
-                form.reset();
-
-                // Redireciona para WhatsApp após pequeno delay
-                setTimeout(() => {
-                    window.location.href = data.whatsapp_url;
-                }, 800);
-
-            } catch (error) {
-                console.error('Erro:', error);
-                showMessage(messageDiv, 'Erro de conexão. Tente novamente.', 'error');
-            } finally {
-                submitBtn.disabled = false;
-                submitBtn.textContent = originalBtnText;
-            }
-        }
-
-        function showMessage(div, text, type) {
-            div.innerHTML = `<div class="message ${type}">${text}</div>`;
-            setTimeout(() => div.innerHTML = '', 6000);
-        }
-
-        document.getElementById('heroForm').addEventListener('submit', (e) =>
-            handleFormSubmit(e, 'heroForm', 'heroMessage')
-        );
-
-        document.getElementById('pricingForm').addEventListener('submit', (e) =>
-            handleFormSubmit(e, 'pricingForm', 'pricingMessage')
-        );
+            });
+        });
 
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
